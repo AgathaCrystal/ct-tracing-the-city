@@ -15,6 +15,8 @@ const canvas = createCanvas(width, 200, "svg");
 const ctx = canvas.getContext("2d");
 let outFilePath = path.resolve(process.cwd(), `./out/sketch.svg`);
 
+
+
 async function main() {
   try {
     // YOUR CODE STARTS HERE YOUR CODE STARTS HERE YOUR CODE STARTS HERE
@@ -32,7 +34,7 @@ async function main() {
     for (const feature of geojson.features) {
       console.log(feature.properties.Gemeinde_name); // the name of the Bezirk
       const bboxCoords = calcBBox.default(feature); // <<-- This is a function from the turf library https://turfjs.org/docs/#bbox
-      drawBBox(ctx, bboxCoords); // now we draw that bboxCoords see ./lib/drawing.js
+      // drawBBox(ctx, bboxCoords); // now we draw that bboxCoords see ./lib/drawing.js
 
       // ---------- now for the polygon drawing
 

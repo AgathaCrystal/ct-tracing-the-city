@@ -7,23 +7,34 @@ const { width, height } = require("./constants");
  * @param {Array} coords The coordinates of the polygon as [[longitude, latitude],[longitude, latitude]...]
  */
 function drawPolygon(context, coords) {
-  context.beginPath();
   for (let i = 0; i < coords.length; i++) {
     const lon = coords[i][0];
     const lat = coords[i][1];
-    /**
-     * Calculate x,y within the bounds of Berlin / Potsdam
-     */
     const x =
       width *
       ((boundingBox.left - lon) / (boundingBox.left - boundingBox.right));
     const y =
       height *
       ((boundingBox.top - lat) / (boundingBox.top - boundingBox.bottom));
-    /**
-     * If we are at iteration 0 we only move the cursor to the starting point
-     * else we draw a line
-     */
+
+    context.beginPath();
+    context.arc(x, y, 5, 0, 2 * Math.PI, true);
+    context.stroke();
+  }
+
+
+
+ /* context.beginPath();
+  for (let i = 0; i < coords.length; i++) {
+    const lon = coords[i][0];
+    const lat = coords[i][1];
+    const x =
+      width *
+      ((boundingBox.left - lon) / (boundingBox.left - boundingBox.right));
+    const y =
+      height *
+      ((boundingBox.top - lat) / (boundingBox.top - boundingBox.bottom));
+    
     if (i === 0) {
       context.moveTo(x, y);
     } else {
@@ -32,6 +43,7 @@ function drawPolygon(context, coords) {
   }
   context.closePath(); // close the shape
   context.stroke(); // make it a line
+  */
 }
 
 /**
